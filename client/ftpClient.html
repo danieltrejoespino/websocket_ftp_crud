@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cliente FTP</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="assets/icons/fontawesome/css/fontawesome.css"
+      rel="stylesheet"
+    />
+    <link href="assets/icons/fontawesome/css/brands.css" rel="stylesheet" />
+    <link href="assets/icons/fontawesome/css/solid.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid text-center">
+      <div class="row align-items-start">
+        <h1 class="mb-3">Cliente FTP</h1>
+      </div>
+      <div class="row align-items-start">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="user"
+                  placeholder="user"
+                  value="u466684088.danielTrejo"
+                />
+                <label for="floatingInput">
+                  <i class="fa-regular fa-user"></i> Usuario</label
+                >
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="pass"
+                  placeholder="Password"
+                  value="danielTrejo12@$"
+                />
+                <label for="floatingPassword">
+                  <i class="fa-solid fa-key"></i> Contrase&ntilde;a</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="p-3 m-0 border-0 bd-example m-0 border-0">
+              <button
+                id="connect"
+                type="button"
+                class="btn btn-outline-success"
+              >
+                Conectar
+              </button>
+              <button
+                id="disconnect"
+                type="button"
+                class="btn btn-outline-success"
+                disabled
+              >
+                Desconectar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="inPath" disabled />
+            <label for="floatingInput">
+              <i class="fa-regular fa-user"></i> Ruta</label
+            >
+          </div>
+
+          <div class="form-floating mt-2">
+            <textarea
+              class="form-control"
+              placeholder="Leave a comment here"
+              id="log"
+              style="height: 100px"
+            ></textarea>
+            <label for="log">Log de peticiones</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt-4">
+      <div class="row area">
+        <div class="col">
+          <p hidden id="returnPath">
+            <i class="fa-regular fa-folder"></i>
+            Folder ...
+          </p>
+        </div>
+        <!-- <div class="col">
+          <input class="form-control form-control" id="formFileMultiple" type="file" multiple>
+          <button id="btnUpload" type="button" class="btn btn-outline-primary" > Subir archivos
+            <i class="fa-solid fa-upload"></i>
+          </button> 
+        </div> -->
+      </div>
+    </div>
+
+    <div class="container-fluid mt-4">
+      <table id="tblFtp" hidden class="table table-striped table-hover">
+        <colgroup>
+          <col style="width: 800px" />
+          <col />
+          <col />
+          <col />
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Acciones</th>
+            <th scope="col">Ultima modificacion</th>
+            <th scope="col">Ultima acceso</th>
+            <th scope="col">Tama&ntilde;o</th>
+          </tr>
+        </thead>
+        <tbody id="ftpCrud"></tbody>
+      </table>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/79759b7123.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="./assets/js/socket.js?v=1.0"></script> -->
+    <script>
+      const script = document.createElement("script");
+      script.src = "./assets/js/socket.js?v=" + new Date().getTime(); // Cache busting
+      document.head.appendChild(script);
+    </script>
+  </body>
+</html>

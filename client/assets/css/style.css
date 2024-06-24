@@ -1,0 +1,33 @@
+
+body {
+  background-color: #f4f8fb;
+  color: rgb(0, 0, 0);
+}
+
+/* #sftpCrud{
+  height: 500px;
+  overflow-y: auto;
+  
+} */
+
+.area{
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #cde0ea;
+}
+
+#returnPath{
+  cursor: pointer;
+}
+/* 
+#returnPath:hover,
+.files:hover {
+  background-color: #2f5b75; 
+  color: white;
+  font-weight: bold;
+} */
+
+.files{
+  cursor: pointer;
+}
+ 
