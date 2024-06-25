@@ -1,6 +1,7 @@
 const { handleFTPCommand } = require('./ftpHandler');
 
 function handleWebSocketConnection(ws,req) {
+  console.log('Usuario conectado')
   ws.on('message', async function incoming(accions) {
     const ip = req.socket.remoteAddress;
     const command = JSON.parse(accions);

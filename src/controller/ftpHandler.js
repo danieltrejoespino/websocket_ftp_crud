@@ -1,7 +1,10 @@
 const ftp = require('ftp');
 const {accionsMysql} = require('../model/modelMysql')
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 async function handleFTPCommand(ws, command) {
-  let client = ws.client || new ftp(); // Reuse the client if it exists, otherwise create a new one
+  let client = ws.client || new ftp(); 
 
   try {
     switch (command.type) {
@@ -11,8 +14,7 @@ async function handleFTPCommand(ws, command) {
           return;
         }       
         
-        await accionsMysql.log(command.user,`Conectado a ftp`)       
-
+        await accionsMysql.log(command.user,`Conectado a ftp: ${command.host}`)       
 
         client.on('ready', () => {
           console.log('FTP client ready');
@@ -23,15 +25,17 @@ async function handleFTPCommand(ws, command) {
         client.on('error', (error) => {
           console.error('FTP error:', error);
           ws.send(JSON.stringify({ status: 'error', message: error.message }));
-        });
-
-        client.connect({
+        }); 
+        const ftpOptions = {
           host: command.host,
+          port: command.port,
+          secure: true, 
           user: command.user,
-          password: command.password,
-        });
+          password: command.password
+        };
+        client.connect(ftpOptions);
 
-        ws.client = client; // Store the client in the WebSocket object
+        ws.client = client; 
         break;
 
       case 'disconnect':
@@ -43,7 +47,7 @@ async function handleFTPCommand(ws, command) {
         await accionsMysql.log(command.user,`Desconectado del ftp`)
         console.log('Disconnecting');
         ws.client.end();
-        ws.client = null; // Clear the client reference
+        ws.client = null; 
 
         ws.send(JSON.stringify({ status: 'disconnected' }));
         ws.close();

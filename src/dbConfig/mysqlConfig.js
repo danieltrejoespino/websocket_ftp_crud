@@ -3,17 +3,29 @@ const mysql = require('mysql2/promise');
 
  
 // const envO = {
-//   host: "172.20.1.97",
-//   user: "msn_impulse",
-//   password: "m5N1mpul53*"  
+//   host: '172.20.1.149',
+//   user: 'lresendiz',
+//   password: 'R3s3nd1z*',
+//   database: 'imp_internal'
 // }
 
+
+
 const envO = {
-  host: "195.179.238.1",
-  user: "u466684088_daniel_trejo",
-  password: "4Jl[bdxI0#",
-  database : 'u466684088_imp_internal',
+  host: "172.20.1.97",
+  user: "msn_impulse",
+  password: "m5N1mpul53*",
+  database : 'itachi',
 }
+
+
+
+// const envO = {
+//   host: "195.179.238.1",
+//   user: "u466684088_daniel_trejo",
+//   password: "4Jl[bdxI0#",
+//   database : 'u466684088_imp_internal',
+// }
 
 
 async function connItahi() {

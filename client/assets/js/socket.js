@@ -28,17 +28,18 @@ disconnectButton.addEventListener('click', () => {
 });
 
 const openSocket = () => {
-  socket = new WebSocket('ws://localhost:3002')
+  // socket = new WebSocket('ws://172.20.2.57:3002')
+  socket = new WebSocket('wss://172.20.1.97:3002')
   socket.addEventListener('open', () => {
     socket.send(
       JSON.stringify({
         type: 'connect',
-        host: 'ftp.jaudica.com',
-        // port: 21,
+        host: '172.23.62.185',
+        port: 1689,
         user: user.value.trim(),
         password: pass.value.trim()
-        // user: 'u466684088.danielTrejo',
-        // password: 'danielTrejo12@$'
+        // user: 'dtrejo',
+        // password: 'P4ssw0rd'
       })
     );
     connectButton.disabled = true
@@ -181,7 +182,7 @@ const handleOpenFolder = (data) => {
 
 returnPath.addEventListener('dblclick', (e) => {
   createPath(2,0)
-  eventLog(`Mostrando archivos de la ruta: ${data}`)
+  // eventLog(`Mostrando archivos de la ruta: ${data}`)
 
   socket.send(JSON.stringify(
     {
